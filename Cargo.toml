@@ -1,0 +1,30 @@
+[package]
+name = "acude"
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.89.0"
+description = "açude — the retained WAL reservoir: a typed, content-addressed Postgres WAL archiver"
+license = "MIT"
+repository = "https://github.com/pleme-io/acude"
+
+[lib]
+name = "acude"
+path = "src/lib.rs"
+
+[[bin]]
+name = "acude"
+path = "src/main.rs"
+
+[dependencies]
+blake3 = "1"
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+zstd = "0.13"
+
+[dev-dependencies]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+strip = true
